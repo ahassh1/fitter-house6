@@ -1,5 +1,6 @@
 import { IlibraryType } from "@/types/libraryType";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface LibraryCardProps {
@@ -9,6 +10,7 @@ interface LibraryCardProps {
 const LibraryCard = ({
   library: {
     image,
+    id,
     name,
     difficulty,
     muscleGroups,
@@ -19,6 +21,7 @@ const LibraryCard = ({
   },
 }: LibraryCardProps) => {
   return (
+   <Link href={`/exercise/${id}`}>
     <div className="cursor-pointer group overflow-hidden rounded-2xl border border-gray-800 bg-[#151515] transition-all duration-300 hover:-translate-y-1 hover:border-[#C2F800]/50 hover:shadow-xl hover:shadow-black/30">
       <div className="relative h-56 w-full overflow-hidden">
         <Image
@@ -80,7 +83,7 @@ const LibraryCard = ({
           </div>
         </div>
       </div>
-    </div>
+    </div></Link>
   );
 };
 

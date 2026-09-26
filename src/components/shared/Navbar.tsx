@@ -11,9 +11,9 @@ const Navbar = () => {
   const links = (
     <>
       <Link
-        href="/workout"
+        href="/"
         className={`px-4 py-2 text-sm font-medium transition-colors duration-200 hover:text-[#C2F800] ${
-          pathname === "/workout" ? "text-[#C2F800]" : "text-white"
+          pathname === "/" ? "text-[#C2F800]" : "text-white"
         }`}
       >
         Workouts
