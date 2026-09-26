@@ -5,10 +5,10 @@ import bannerImg from "../../assets/banner.png";
 
 const Banner = () => {
   return (
-    <section className="container mx-auto px-4 py-6 sm:py-8 lg:px-0">
+    <section className="container mx-auto px-4 py-2 sm:py-8 lg:px-0">
       <div className="grid items-center gap-8 overflow-hidden rounded-2xl bg-gray-800 px-6 py-10 sm:px-10 md:grid-cols-2 md:py-12 lg:px-14">
 
-        {/* Banner Content */}
+
         <div className="text-center md:text-left">
           <p className="mb-3 text-xs font-semibold tracking-[3px] text-[#C2F800] sm:text-sm">
             WORKOUT LIBRARY
@@ -31,7 +31,7 @@ const Banner = () => {
           </button>
         </div>
 
-        {/* Banner Image */}
+    
         <div className="flex justify-center md:justify-end">
           <Image
             src={bannerImg}
