@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IlibraryType } from "@/types/libraryType";
 import pageNotFoundImg from "@/assets/pagenotfound.jpg";
 import AddToday from "@/components/LibraryDetails/AddToday";
+import SaveLater from "@/components/LibraryDetails/SaveLater";
 
 const DetailsPage = ({
   exercise,
@@ -187,9 +188,7 @@ const DetailsPage = ({
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <AddToday exercise={exercise}/>
 
-              <button className="w-full cursor-pointer rounded-lg border border-gray-700 px-5 py-3 text-sm font-medium text-gray-300 transition hover:border-[#C2F800] hover:text-[#C2F800] sm:w-auto">
-                Save for Later
-              </button>
+             <SaveLater exercise={exercise}/>
             </div>
           </div>
         </div>
