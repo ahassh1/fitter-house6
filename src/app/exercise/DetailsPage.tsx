@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { IlibraryType } from "@/types/libraryType";
 import pageNotFoundImg from "@/assets/pagenotfound.jpg";
+import AddToday from "@/components/LibraryDetails/AddToday";
 
 const DetailsPage = ({
   exercise,
@@ -17,6 +18,7 @@ const DetailsPage = ({
           alt="Page not found"
           width={400}
           height={300}
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="mb-6 w-full max-w-xs object-contain sm:max-w-sm"
         />
 
@@ -62,6 +64,7 @@ const DetailsPage = ({
             <Image
               src={image}
               alt={name}
+              sizes="(max-width: 768px) 100vw, 50vw"
               fill
               priority
               className="object-cover"
@@ -182,9 +185,7 @@ const DetailsPage = ({
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button className="w-full cursor-pointer rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d5ff33] sm:w-auto">
-                Add to Today&apos;s Plan
-              </button>
+          <AddToday exercise={exercise}/>
 
               <button className="w-full cursor-pointer rounded-lg border border-gray-700 px-5 py-3 text-sm font-medium text-gray-300 transition hover:border-[#C2F800] hover:text-[#C2F800] sm:w-auto">
                 Save for Later

@@ -1,7 +1,6 @@
 import { IlibraryType } from "@/types/libraryType";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 interface LibraryCardProps {
   library: IlibraryType;
@@ -27,6 +26,7 @@ const LibraryCard = ({
         <Image
           src={image}
           alt={name}
+          sizes="(max-width: 768px) 100vw, 50vw"
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
         />

@@ -20,12 +20,12 @@ const Navbar = () => {
       </Link>
 
       <Link
-        href="/my-plan"
+        href="/listed-plan"
         className={`px-4 py-2 text-sm font-medium transition-colors duration-200 hover:text-[#C2F800] ${
-          pathname === "/my-plan" ? "text-[#C2F800]" : "text-white"
+          pathname === "/listed-plan" ? "text-[#C2F800]" : "text-white"
         }`}
       >
-        My Plan
+        Listed Plan
       </Link>
     </>
   );
@@ -71,6 +71,7 @@ const Navbar = () => {
             alt="FitLog logo"
             width={36}
             height={36}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain"
           />
 

@@ -38,6 +38,7 @@ const Banner = () => {
             alt="FitLog workout"
             width={500}
             height={500}
+            sizes="(max-width: 768px) 100vw, 50vw"
             priority
             className="h-auto w-full `max-w-[280px]` object-contain `sm:max-w-[340px]` `md:max-w-[380px]` `lg:max-w-[430px]`"
           />

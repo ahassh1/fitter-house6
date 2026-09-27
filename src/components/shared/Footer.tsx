@@ -8,9 +8,10 @@ const Footer = () => {
         <div className="flex items-center gap-3">
           <Image
             src={footerLogo}
-            alt="FitLog logo"
+            alt="FitLog-logo"
             width={40}
             height={40}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain"
           />
 
