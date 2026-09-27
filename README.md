@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Name
+ - Fitter House
+## 📌 Project Description
 
-## Getting Started
+This is basically a fitter hause project that is organazed, modern and responsive web applicatioon that support all devices like mobile tablet, tab, web desktop etc. I Used this for user friendly, reusable component format that load first render.
 
-First, run the development server:
+## 🛠️ Technologies that i Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS
+- DaisyUI
+- JavaScript
+- React Toastify
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Beautiful Banner section**
+   - User when visit the first time in the application they will surprise to look hero section.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Exercise Details**
+   - Users can view their detailed information about a selected exercise in an easy-to-understand format.
 
-## Learn More
+3. **Simple Navigation**
+   - A responsive navbar helps users easily navigate between different pages and sections.
 
-To learn more about Next.js, take a look at the following resources:
+4. **Fully Responsive Design**
+   - The application works smoothly on mobile, tablet, and desktop devices.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Clean and User-Friendly UI**
+   - The project uses a simple, modern, and organized design for a better user experience.
