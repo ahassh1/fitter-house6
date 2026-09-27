@@ -3,6 +3,7 @@
 import { ExerciseContext } from "@/context/LibraryContext";
 import { IlibraryType } from "@/types/libraryType";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 const SaveLater = ({ exercise }: { exercise: IlibraryType }) => {
   const { saveLater, setSaveLater } = useContext(ExerciseContext);
@@ -11,7 +12,7 @@ const SaveLater = ({ exercise }: { exercise: IlibraryType }) => {
     setSaveLater([...saveLater, exercise]);
     console.log(exercise);
 
-    alert(`You have read today "${exercise.name}"`);
+    toast.info(`You have save this "${exercise.name}"`);
   };
 
   return (

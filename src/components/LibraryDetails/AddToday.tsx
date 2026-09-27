@@ -3,6 +3,7 @@
 import { ExerciseContext } from "@/context/LibraryContext";
 import { IlibraryType } from "@/types/libraryType";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 const AddToday = ({ exercise }: { exercise: IlibraryType }) => {
   const { addToday, setAddToday } = useContext(ExerciseContext);
@@ -11,7 +12,7 @@ const AddToday = ({ exercise }: { exercise: IlibraryType }) => {
     setAddToday([...addToday, exercise]);
     console.log(exercise);
 
-    alert(`You have read today "${exercise.name}"`);
+    toast.success(`You have read today "${exercise.name}"`);
   };
 
   return (
