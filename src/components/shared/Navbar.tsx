@@ -103,20 +103,16 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <Link
-            href="/status"
-            className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 hover:bg-white/5 ${
-              pathname === "/status"
-                ? "text-[#C2F800]"
-                : "text-white"
-            }`}
+          <a
+        
+            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 hover:bg-white/5"
           >
             <span>Status</span>
 
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-[12px] text-white">
               0
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </nav>
