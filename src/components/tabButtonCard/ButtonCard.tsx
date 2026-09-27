@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { IlibraryType } from "@/types/libraryType";
+import { toast } from "react-toastify";
 
 interface ButtonCardProps {
   exercise: IlibraryType;
@@ -68,6 +69,7 @@ const ButtonCard = ({
 
         {showMarkAsDone && (
           <button
+          onClick={()=>  toast.info(`${exercise.name} marked as done!`)}
             type="button"
             className="rounded-full bg-[#C2F800] px-4 py-2 text-sm font-semibold text-black transition hover:bg-[#d5ff33]"
           >
@@ -77,7 +79,10 @@ const ButtonCard = ({
 
         <button
           type="button"
-          onClick={() => handleRemove(exercise.id)}
+          onClick={() =>{
+            toast.info(`${exercise.name} remove exercise successfully`)
+            handleRemove(exercise.id)
+          }}
           className="cursor-pointer px-2 text-xl text-gray-400 transition hover:text-red-400"
           aria-label={`Remove ${exercise.name}`}
         >

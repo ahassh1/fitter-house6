@@ -35,7 +35,8 @@ const ListedPlan = () => {
   const sortItems = (exercises: IlibraryType[]) => {
     const uniqueItems = exercises.filter(
       (exercise, index, self) =>
-        index === self.findIndex((item) => item.id === exercise.id)
+        index ===
+        self.findIndex((item) => item.id === exercise.id)
     );
 
     const sortedItems = [...uniqueItems];
@@ -51,7 +52,9 @@ const ListedPlan = () => {
     }
 
     if (sortBy === "duration") {
-      sortedItems.sort((a, b) => b.duration - a.duration);
+      sortedItems.sort(
+        (a, b) => b.duration - a.duration
+      );
     }
 
     return sortedItems;
@@ -89,7 +92,9 @@ const ListedPlan = () => {
 
       <div className="mb-8 grid grid-cols-1 overflow-hidden rounded-2xl border border-gray-800 bg-[#1a1d23] sm:grid-cols-3">
         <div className="border-b border-gray-800 p-5 sm:border-b-0 sm:border-r">
-          <p className="text-sm text-gray-400">Exercises</p>
+          <p className="text-sm text-gray-400">
+            Exercises
+          </p>
 
           <h2 className="mt-1 text-3xl font-bold text-[#C2F800]">
             {totalExercises}
@@ -97,15 +102,19 @@ const ListedPlan = () => {
         </div>
 
         <div className="border-b border-gray-800 p-5 sm:border-b-0 sm:border-r">
-          <p className="text-sm text-gray-400">Minutes</p>
+          <p className="text-sm text-gray-400">
+            Minutes
+          </p>
 
           <h2 className="mt-1 text-3xl font-bold text-white">
             {totalMinutes}
           </h2>
         </div>
 
-        <div className="p-5">
-          <p className="text-sm text-gray-400">Calories</p>
+           <div className="p-5">
+          <p className="text-sm text-gray-400">
+            Calories
+          </p>
 
           <h2 className="mt-1 text-3xl font-bold text-white">
             {totalCalories}
@@ -113,43 +122,45 @@ const ListedPlan = () => {
         </div>
       </div>
 
-      <div className="mb-6">
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value as Sort)}
-          className="select"
-        >
-          <option value="rating">Rating</option>
-          <option value="duration">Duration</option>
-          <option value="calories">Calories</option>
-        </select>
-      </div>
+               <div className="w-full">
+        <div className="mb-6 flex items-center justify-between border-b border-gray-800">
+          <div className="flex gap-2">
+            <button
+              type="button"
+                  onClick={() => setActiveTab("today")}
+              className={`px-5 py-3 text-sm font-semibold transition ${
+                activeTab === "today"
+                  ? "border-b-2 border-[#C2F800] text-[#C2F800]"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+                    Todays Plan
+            </button>
 
-      <div className="w-full">
-        <div className="mb-6 flex gap-2 border-b border-gray-800">
-          <button
-            type="button"
-            onClick={() => setActiveTab("today")}
-            className={`px-5 py-3 text-sm font-semibold transition ${
-              activeTab === "today"
-                ? "border-b-2 border-[#C2F800] text-[#C2F800]"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            Todays Plan
-          </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("saved")}
+              className={`px-5 py-3 text-sm font-semibold transition ${
+                activeTab === "saved"
+                  ? "border-b-2 border-[#C2F800] text-[#C2F800]"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              Saved
+            </button>
+          </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("saved")}
-            className={`px-5 py-3 text-sm font-semibold transition ${
-              activeTab === "saved"
-                ? "border-b-2 border-[#C2F800] text-[#C2F800]"
-                : "text-gray-400 hover:text-white"
-            }`}
+          <select
+            value={sortBy}
+            onChange={(e) =>
+              setSortBy(e.target.value as Sort)
+            }
+            className="mb-2 cursor-pointer rounded-lg border border-[#bceb15] bg-[#1a1d23] px-4 py-2 text-sm font-medium text-white outline-none transition hover:border-[#c8ff00] focus:border-[#C2F800] focus:ring-1 focus:ring-[#C2F800]"
           >
-            Saved
-          </button>
+            <option value="rating">Rating</option>
+            <option value="duration">Duration</option>
+            <option value="calories">Calories</option>
+          </select>
         </div>
 
         {activeTab === "today" && (
@@ -172,8 +183,8 @@ const ListedPlan = () => {
                 </h2>
 
                 <p className="mt-2 text-sm text-gray-400">
-                  Browse the workout library and add a lift to get today
-                  moving.
+                  Browse the workout library and add a lift to get
+                  today moving.
                 </p>
 
                 <Link
@@ -207,8 +218,8 @@ const ListedPlan = () => {
                 </h2>
 
                 <p className="mt-2 text-sm text-gray-400">
-                  Browse the workout library and save an exercise for
-                  later.
+                  Browse the workout library and save an exercise
+                  for later.
                 </p>
 
                 <Link

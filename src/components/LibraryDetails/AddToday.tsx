@@ -8,17 +8,19 @@ import { toast } from "react-toastify";
 const AddToday = ({ exercise }: { exercise: IlibraryType }) => {
   const { addToday, setAddToday } = useContext(ExerciseContext);
 
-  const handleAddToday = () => {
-    setAddToday([...addToday, exercise]);
-    console.log(exercise);
+const handleAddToday = () => {
+  if (addToday.some((item) => item.id === exercise.id)) {
+    toast.error(`${exercise.name} already added!`);
+    return;
+  }
 
-    toast.success(`You have read today "${exercise.name}"`);
-  };
-
-  return (
+  setAddToday([...addToday, exercise]);
+  toast.success(`${exercise.name} Added successfully!`);
+};
+return (
     <div>
       <button
-        onClick={()=> handleAddToday()}
+        onClick={handleAddToday}
         className="w-full cursor-pointer rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#d5ff33] sm:w-auto"
       >
         Add to Today&apos;s Plan

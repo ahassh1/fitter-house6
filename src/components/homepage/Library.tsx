@@ -4,13 +4,18 @@ import LibraryCard from "../shared/LibraryCard";
 import { IlibraryType } from "@/types/libraryType";
 
 const getLibrary = async () => {
-  const res = await fetch("http://localhost:3000/fitLogData.json");
+    try{
 
-  const data = await res.json();
-
-  return data;
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/fitLogData.json`);
+    
+      const data = await res.json();
+    
+      return data;
+    } catch(error){
+      console.error("Error fatching books data:", error)
+      return[]
+    }
 };
-
 const Library = async () => {
   const libraryData: IlibraryType[] = await getLibrary();
 

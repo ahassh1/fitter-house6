@@ -7,13 +7,15 @@ import { toast } from "react-toastify";
 
 const SaveLater = ({ exercise }: { exercise: IlibraryType }) => {
   const { saveLater, setSaveLater } = useContext(ExerciseContext);
+ const handleSaveLater = () => {
+  if (saveLater.some((item) => item.id === exercise.id)) {
+    toast.error(`${exercise.name}Already added!`);
+    return;
+  }
 
-  const handleSaveLater = () => {
-    setSaveLater([...saveLater, exercise]);
-    console.log(exercise);
-
-    toast.info(`You have save this "${exercise.name}"`);
-  };
+  setSaveLater([...saveLater, exercise]);
+  toast.success(`${exercise.name} Added successfully!`);
+};
 
   return (
     <div>
