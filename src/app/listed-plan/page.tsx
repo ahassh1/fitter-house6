@@ -2,8 +2,12 @@
 
 import ButtonCard from "@/components/tabButtonCard/ButtonCard";
 import { ExerciseContext } from "@/context/LibraryContext";
+import { IlibraryType } from "@/types/libraryType";
 import Link from "next/link";
 import { useContext, useState } from "react";
+
+type Tab = "today" | "saved";
+type Sort = "rating" | "calories" | "duration";
 
 const ListedPlan = () => {
   const {
@@ -13,22 +17,48 @@ const ListedPlan = () => {
     setSaveLater,
   } = useContext(ExerciseContext);
 
-  const [activeTab, setActiveTab] = useState<"today" | "saved">(
-    "today"
-  );
-
+  const [activeTab, setActiveTab] = useState<Tab>("today");
+  const [sortBy, setSortBy] = useState<Sort>("rating");
 
   const handleRemoveToday = (id: number) => {
-  setAddToday(
-    addToday.filter((exercise) => exercise.id !== id)
-  );
-};
+    setAddToday(
+      addToday.filter((exercise) => exercise.id !== id)
+    );
+  };
 
-const handleRemoveSaved = (id: number) => {
-  setSaveLater(
-    saveLater.filter((exercise) => exercise.id !== id)
-  );
-};
+  const handleRemoveSaved = (id: number) => {
+    setSaveLater(
+      saveLater.filter((exercise) => exercise.id !== id)
+    );
+  };
+
+  const sortItems = (exercises: IlibraryType[]) => {
+    const uniqueItems = exercises.filter(
+      (exercise, index, self) =>
+        index === self.findIndex((item) => item.id === exercise.id)
+    );
+
+    const sortedItems = [...uniqueItems];
+
+    if (sortBy === "rating") {
+      sortedItems.sort((a, b) => b.rating - a.rating);
+    }
+
+    if (sortBy === "calories") {
+      sortedItems.sort(
+        (a, b) => b.caloriesBurned - a.caloriesBurned
+      );
+    }
+
+    if (sortBy === "duration") {
+      sortedItems.sort((a, b) => b.duration - a.duration);
+    }
+
+    return sortedItems;
+  };
+
+  const sortedAddToday = sortItems(addToday);
+  const sortedSaved = sortItems(saveLater);
 
   const currentExercises =
     activeTab === "today" ? addToday : saveLater;
@@ -47,7 +77,6 @@ const handleRemoveSaved = (id: number) => {
 
   return (
     <section className="container mx-auto px-4 py-8 lg:px-0">
-  
       <div className="mb-8">
         <h1 className="text-2xl font-bold uppercase tracking-wide text-white">
           My Plan
@@ -58,35 +87,25 @@ const handleRemoveSaved = (id: number) => {
         </p>
       </div>
 
-  
       <div className="mb-8 grid grid-cols-1 overflow-hidden rounded-2xl border border-gray-800 bg-[#1a1d23] sm:grid-cols-3">
-    
         <div className="border-b border-gray-800 p-5 sm:border-b-0 sm:border-r">
-          <p className="text-sm text-gray-400">
-            Exercises
-          </p>
+          <p className="text-sm text-gray-400">Exercises</p>
 
           <h2 className="mt-1 text-3xl font-bold text-[#C2F800]">
             {totalExercises}
           </h2>
         </div>
 
-
         <div className="border-b border-gray-800 p-5 sm:border-b-0 sm:border-r">
-          <p className="text-sm text-gray-400">
-            Minutes
-          </p>
+          <p className="text-sm text-gray-400">Minutes</p>
 
           <h2 className="mt-1 text-3xl font-bold text-white">
             {totalMinutes}
           </h2>
         </div>
 
-
         <div className="p-5">
-          <p className="text-sm text-gray-400">
-            Calories
-          </p>
+          <p className="text-sm text-gray-400">Calories</p>
 
           <h2 className="mt-1 text-3xl font-bold text-white">
             {totalCalories}
@@ -94,9 +113,19 @@ const handleRemoveSaved = (id: number) => {
         </div>
       </div>
 
+      <div className="mb-6">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value as Sort)}
+          className="select"
+        >
+          <option value="rating">Rating</option>
+          <option value="duration">Duration</option>
+          <option value="calories">Calories</option>
+        </select>
+      </div>
 
       <div className="w-full">
-
         <div className="mb-6 flex gap-2 border-b border-gray-800">
           <button
             type="button"
@@ -123,12 +152,11 @@ const handleRemoveSaved = (id: number) => {
           </button>
         </div>
 
- 
         {activeTab === "today" && (
           <div>
-            {addToday.length > 0 ? (
+            {sortedAddToday.length > 0 ? (
               <div className="space-y-4">
-                {addToday.map((exercise) => (
+                {sortedAddToday.map((exercise) => (
                   <ButtonCard
                     key={exercise.id}
                     exercise={exercise}
@@ -144,8 +172,8 @@ const handleRemoveSaved = (id: number) => {
                 </h2>
 
                 <p className="mt-2 text-sm text-gray-400">
-                  Browse the workout library and add a lift to get
-                  today moving.
+                  Browse the workout library and add a lift to get today
+                  moving.
                 </p>
 
                 <Link
@@ -159,12 +187,11 @@ const handleRemoveSaved = (id: number) => {
           </div>
         )}
 
-  
         {activeTab === "saved" && (
           <div>
-            {saveLater.length > 0 ? (
+            {sortedSaved.length > 0 ? (
               <div className="space-y-4">
-                {saveLater.map((exercise) => (
+                {sortedSaved.map((exercise) => (
                   <ButtonCard
                     key={exercise.id}
                     exercise={exercise}
@@ -180,8 +207,8 @@ const handleRemoveSaved = (id: number) => {
                 </h2>
 
                 <p className="mt-2 text-sm text-gray-400">
-                  Browse the workout library and save an exercise
-                  for later.
+                  Browse the workout library and save an exercise for
+                  later.
                 </p>
 
                 <Link
